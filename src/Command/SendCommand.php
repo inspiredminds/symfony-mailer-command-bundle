@@ -91,8 +91,8 @@ EOF
 
     protected function interact(InputInterface $input, OutputInterface $output): void
     {
-        foreach ($input->getOptions() as $option => $value) {
-            if (null === $value && 'transport' !== $option) {
+        foreach (['from', 'to', 'subject', 'body'] as $option) {
+            if (null === $input->getOption($option)) {
                 $input->setOption($option, $this->io->ask(sprintf('%s', ucfirst($option))));
             }
         }
