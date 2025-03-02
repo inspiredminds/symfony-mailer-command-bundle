@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=8.1",
         "symfony/console": "^5.4 || ^6.4 || ^7.1",
         "symfony/mime": "^5.4 || ^6.4 || ^7.1",
         "symfony/mailer": "^5.4 || ^6.4 || ^7.1",

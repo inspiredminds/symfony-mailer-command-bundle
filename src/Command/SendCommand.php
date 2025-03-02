@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace InspiredMinds\SymfonyMailerCommandBundle\Command;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -20,19 +21,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
+#[AsCommand('mailer:send', 'Sends an email message')]
 final class SendCommand extends Command
 {
-    protected static $defaultName = 'mailer:send';
-    protected static $defaultDescription = 'Sends an email message';
+    private SymfonyStyle|null $io = null;
 
-    private $io;
-    private $mailer;
-
-    public function __construct(MailerInterface $mailer)
+    public function __construct(private readonly MailerInterface $mailer)
     {
         parent::__construct();
-
-        $this->mailer = $mailer;
     }
 
     protected function configure(): void
