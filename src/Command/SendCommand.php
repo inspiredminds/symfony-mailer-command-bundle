@@ -60,7 +60,7 @@ EOF
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         switch ($input->getOption('body-source')) {
             case 'file':
@@ -80,7 +80,7 @@ EOF
         $this->mailer->send($this->createMessage($input));
         $this->io->success('Email was successfully sent.');
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     protected function initialize(InputInterface $input, OutputInterface $output): void
